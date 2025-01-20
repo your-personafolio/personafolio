@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*", // Proxy semua permintaan ke /api/ ke server backend
+        destination: "http://localhost:3000/:path*", // Ganti dengan URL backend Anda
+      },
+    ];
+  },
 };
 
 export default nextConfig;
