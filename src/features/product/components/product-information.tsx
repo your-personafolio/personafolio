@@ -28,12 +28,14 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
       <hr className="my-4" />
       <div className="space-y-6">
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black dark:text-gray-700">Size:</h3>
-          <div className="dark:text-gray-500">{product?.size?.name}</div>
+          <h3 className="font-semibold text-black dark:text-gray-700">
+            Category:
+          </h3>
+          <div className="dark:text-gray-500">{product?.category?.name}</div>
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black dark:text-gray-700">
-            Color:
+            Preview:
           </h3>
           <div
             className="size-6 rounded-full border border-gray-600 dark:text-gray-500"

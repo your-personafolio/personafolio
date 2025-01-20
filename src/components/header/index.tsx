@@ -17,7 +17,9 @@ const Header = async () => {
         <div className="relative h-16 lg:flex lg:items-center lg:justify-between px-4 sm:px-6 lg:px-8">
           <div className="h-full flex justify-between items-center lg:justify-start">
             <Link href="/" className="ml-4 flex gap-x-2 lg:ml-0">
-              <p className="font-bold text-cl">STORE</p>
+              <p className="font-bold text-cl">
+                <img src="/logo-persona.png" alt="" className="w-14" />
+              </p>
             </Link>
             <div className="hidden lg:block">
               <Navbar data={categories ?? []} />
