@@ -1,5 +1,4 @@
 import type IBillboard from "@/features/billboards/core/types";
-import Image from "next/image";
 
 const Billboard = ({ data }: { data: IBillboard | undefined }) => {
   return (
