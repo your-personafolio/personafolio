@@ -10,7 +10,7 @@ const HomePage = async () => {
   });
   const billboard = await getBillboards();
 
-  return <Home billboard={billboard?.[0]} products={products} />;
+  return <Home />;
 };
 
 export default HomePage;

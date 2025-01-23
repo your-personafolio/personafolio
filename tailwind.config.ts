@@ -12,6 +12,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        personaPri: "#4486A4",
+        personaSec: "#5EA8BF",
+        personaBlue: "#34B8FF",
+        personaGray: "#374151",
+        personaPurple: "#FF3DFC",
+        personaDarkPurple: "#7D37E5",
+        personaDark: "#142F3D",
+        light: "#F9F9FB",
+        dark: "#141414",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

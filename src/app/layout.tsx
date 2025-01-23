@@ -17,8 +17,8 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "Ecommerce store",
-  description: "Developed by Mohammad Bekran",
+  title: "Persona Folio",
+  description: "Developed by Persona Folio",
 };
 
 export default function RootLayout({
