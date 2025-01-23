@@ -1,16 +1,8 @@
-import IBillboard from "@/features/billboards/core/types";
-import type IProduct from "@/features/product/core/types";
 
-import Billboard from "@/components/billboard";
 import MainContainer from "@/components/partials/containers/main-container";
-import ProductList from "@/components/product-list";
 
-interface IHomeProps {
-  billboard?: IBillboard;
-  products?: IProduct[];
-}
 
-const Home = ({ billboard, products }: IHomeProps) => {
+const Home = () => {
   return (
     <MainContainer>
       <div className="space-y-10 pb-10">
