@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 
+import { GoogleTagManager } from "@next/third-parties/google";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ClerkProvider from "@/components/partials/providers/clerk-provider";
@@ -42,6 +43,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </ThemeProvider>
+          <GoogleTagManager gtmId="	G-B2V8XHZ0PV" />
         </body>
       </html>
     </ClerkProvider>
