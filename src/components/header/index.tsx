@@ -22,7 +22,7 @@ const Header = async () => {
               </p>
             </Link>
             <div className="hidden lg:block">
-              <Navbar data={categories ?? []} />
+              <Navbar />
             </div>
             <div className="lg:hidden">
               <MobileNavbar data={categories ?? []} />
