@@ -231,7 +231,8 @@ const Home = ({ products }: IHomeProps) => {
                     <div className="grow pt-0.5 pb-8 sm:pb-12">
                       <p className="text-sm lg:text-base text-neutral-400">
                         <span className="text-light">
-                          Pilih tema website yang kamu sukai!
+                          Pilih tema website yang kamu sukai dan masukkan
+                          keranjang!
                         </span>
                       </p>
                     </div>
@@ -249,7 +250,7 @@ const Home = ({ products }: IHomeProps) => {
                     <div className="grow pt-0.5 pb-8 sm:pb-12">
                       <p className="text-sm lg:text-base text-neutral-400">
                         <span className="text-light">
-                          Masukkan keranjang dan pergi ke halaman keranjang!
+                          Pergi ke halaman Cart!
                         </span>
                       </p>
                     </div>
@@ -267,7 +268,7 @@ const Home = ({ products }: IHomeProps) => {
                     <div className="grow pt-0.5 pb-8 sm:pb-12">
                       <p className="text-sm md:text-base text-neutral-400">
                         <span className="text-light">
-                          Pilih domain dan checkout -{" "}
+                          Pilih nama untuk website kamu dan checkout -{" "}
                         </span>
                         Setelah mengisi form dan klik checkout, kamu akan
                         diarahkan ke wa admin untuk melakukan pembayaran.

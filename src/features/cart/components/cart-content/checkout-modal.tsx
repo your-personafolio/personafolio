@@ -70,7 +70,7 @@ const CheckoutModal = ({
 
   const checkSubdomain = async () => {
     if (!subdomain) {
-      setSubdomainError("Masukkan subdomain!");
+      setSubdomainError("Masukkan nama domain website!");
       return;
     }
 
@@ -87,7 +87,7 @@ const CheckoutModal = ({
       setIsAvailable(data.available);
 
       if (data.available) {
-        setSubdomainError(`Subdomain ${subdomain}.personafolio.com tersedia!`);
+        `Subdomain ${subdomain}.personafolio.com tersedia!`;
       } else {
         setSubdomainError(
           `Subdomain ${subdomain}.personafolio.com tidak tersedia!`
@@ -156,6 +156,10 @@ Mohon segera diproses. Terima kasih!`;
       <div className="size-full">
         <h2 className="text-2xl font-bold">Checkout</h2>
         <div className="my-4">
+          <span className="text-personaPri text-sm block">
+            Pastikan untuk isi semua form di bawah agar bisa melakukan checkout!
+          </span>
+          Masukkan nama domain website
           {isEditing ? (
             <>
               <div className="flex items-center">
@@ -163,8 +167,9 @@ Mohon segera diproses. Terima kasih!`;
                   type="text"
                   value={subdomain}
                   onChange={(e) => setSubdomain(e.target.value)}
-                  placeholder="Masukkan subdomain"
+                  placeholder="Masukkan nama domain website"
                   className="w-full p-2 border rounded-md me-2"
+                  required
                 />
                 .personafolio.com
               </div>
@@ -173,7 +178,7 @@ Mohon segera diproses. Terima kasih!`;
                 disabled={isChecking}
                 className="mt-2 w-full bg-blue-500 text-white p-2 rounded-md"
               >
-                {isChecking ? "Memeriksa..." : "Cek Ketersediaan Sub Domain"}
+                {isChecking ? "Memeriksa..." : "Cek Ketersediaan"}
               </button>
               {subdomainError && (
                 <p className="text-red-500 text-sm mt-1">{subdomainError}</p>
@@ -188,7 +193,7 @@ Mohon segera diproses. Terima kasih!`;
                     onClick={selectSubdomain}
                     className="mt-2 w-full bg-green-500 text-white p-2 rounded-md"
                   >
-                    Pilih Subdomain
+                    Pilih Nama Domain Website
                   </button>
                 </div>
               )}
@@ -220,7 +225,7 @@ Mohon segera diproses. Terima kasih!`;
             type="number"
             name="phone"
             id="phone"
-            placeholder="(555) 555-1234"
+            placeholder="081234567890"
             label="Nomor WA"
             isPending={isPending}
           />
@@ -261,7 +266,7 @@ Mohon segera diproses. Terima kasih!`;
             type="textarea" // Menggunakan textarea jika CheckoutFieldBox mendukungnya
             name="purpose"
             id="purpose"
-            placeholder="Tujuan pembelian...(minimal 10 karakter)"
+            placeholder="misal:Untuk membuat personal branding melalui website pribadi (minimal 10 karakter)"
             label="Tujuan"
             isPending={isPending}
             textarea
