@@ -87,11 +87,9 @@ const CheckoutModal = ({
       setIsAvailable(data.available);
 
       if (data.available) {
-        `Subdomain ${subdomain}.personafolio.com tersedia!`;
+        `${subdomain}.personafolio.com tersedia!`;
       } else {
-        setSubdomainError(
-          `Subdomain ${subdomain}.personafolio.com tidak tersedia!`
-        );
+        setSubdomainError(` ${subdomain}.personafolio.com tidak tersedia!`);
       }
     } finally {
       setIsChecking(false);
