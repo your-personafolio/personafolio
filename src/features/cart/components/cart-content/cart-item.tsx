@@ -6,6 +6,7 @@ import type IProduct from "@/features/product/core/types";
 import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/core/hooks/use-cart.hooks";
+import Link from "next/link";
 
 const CartItem = ({ data }: { data: IProduct }) => {
   const cart = useCart();
@@ -43,11 +44,20 @@ const CartItem = ({ data }: { data: IProduct }) => {
           </div>
           <div className="mt-1 flex text-sm">
             <p className="text-gray-500">{data.color.name}</p>
-            <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
-              {data.size.name}
+            <p className="text-light ml-4 font-bold border-l border-gray-200 pl-4">
+              <Link
+                href={data.size.name}
+                target="_blank"
+                className="btn bg-personaPri p-2 rounded-xl"
+              >
+                Preview
+              </Link>
             </p>
           </div>
-          <Currency value={data.price} />
+          <div className="block">
+            <Currency value={data.price} style="discount" />
+            <Currency value={data.priceWithDiscount} style="non-discount" />
+          </div>
         </div>
       </div>
     </li>

@@ -38,7 +38,7 @@ const ProductItem = ({ data }: { data: IProduct }) => {
 
   return (
     <div
-      className=" group cursor-pointer rounded-xl border p-3 space-y-4"
+      className=" group cursor-pointer rounded-xl border p-3 space-y-3"
       onClick={handleClick}
     >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -76,8 +76,9 @@ const ProductItem = ({ data }: { data: IProduct }) => {
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
       {/* Price */}
-      <div className="flex items-center justify-between">
-        <Currency value={data?.price} />
+      <div className="block">
+        <Currency value={data?.priceWithDiscount} style="non-discount" />
+        <Currency value={data?.price} style="discount" />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ interface IProduct {
   storeId: string;
   name: string;
   price: string;
+  priceWithDiscount?: string;
   isFeatured: boolean;
   isArchived: boolean;
   category: ICategory;

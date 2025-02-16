@@ -1,6 +1,11 @@
-const priceFormatter = new Intl.NumberFormat("en-US", {
+const priceFormatter = new Intl.NumberFormat("id-ID", {
   style: "currency",
-  currency: "USD",
+  currency: "IDR",
+  minimumFractionDigits: 0, // Menghilangkan desimal
+  maximumFractionDigits: 0, // Memastikan tidak ada desimal
 });
 
-export default priceFormatter;
+const formatPrice = (value: number) => {
+  return priceFormatter.format(value).trim() + ",-";
+};
+export default formatPrice;

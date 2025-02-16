@@ -9,22 +9,23 @@ import GalleryTab from "@/features/product/components/gallery/gallery-tab";
 const Gallery = ({ images }: { images?: IImage[] }) => {
   return (
     <TabGroup as="div" className="flex flex-col-reverse">
-      <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+      <div className="mx-auto mt-6 w-full max-w-2xl block">
         <TabList className="grid grid-cols-4 gap-6">
           {images?.map((image) => (
             <GalleryTab key={image.id} image={image} />
           ))}
         </TabList>
       </div>
-      <TabPanels className="aspect-square w-full">
+      <TabPanels className="aspect-auto w-full">
         {images?.map((image) => (
           <TabPanel key={image.id}>
-            <div className="relative size-full overflow-hidden aspect-square sm:rounded-lg">
+            <div className="relative size-full overflow-hidden aspect-auto ">
               <Image
-                fill
                 src={image.url}
                 alt="Product image"
-                className="object-cover object-center"
+                className="object-cover object-center rounded-lg"
+                width={450}
+                height={450}
               />
             </div>
           </TabPanel>

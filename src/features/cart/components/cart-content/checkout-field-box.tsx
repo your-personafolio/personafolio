@@ -1,16 +1,15 @@
-import { Control, Controller } from "react-hook-form";
-import { Input } from "@headlessui/react";
-
+import { Control, useController } from "react-hook-form";
 import type { TCheckoutFormData } from "@/features/cart/core/types";
 
-interface ICheckoutFieldBoxProps {
-  control: Control<TCheckoutFormData>;
+interface CheckoutFieldBoxProps {
+  control?: Control<TCheckoutFormData>;
   type: string;
   name: keyof TCheckoutFormData;
   id: string;
   placeholder: string;
   label: string;
   isPending: boolean;
+  textarea?: boolean;
 }
 
 const CheckoutFieldBox = ({
@@ -21,29 +20,31 @@ const CheckoutFieldBox = ({
   placeholder,
   label,
   isPending,
-}: ICheckoutFieldBoxProps) => {
+  textarea,
+}: CheckoutFieldBoxProps) => {
+  const { field } = useController({ name, control });
+
   return (
-    <div className="flex items-center gap-10">
-      <label
-        htmlFor={id}
-        className="font-medium truncate text-gray-700 w-[100px]"
-      >
-        {label}
-      </label>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <Input
-            type={type}
-            id={id}
-            placeholder={placeholder}
-            disabled={isPending}
-            className="rounded-lg border outline-none p-2 w-3/4"
-            {...field}
-          />
-        )}
-      />
+    <div>
+      <label className="block text-sm font-medium">{label}</label>
+      {textarea ? (
+        <textarea
+          {...field}
+          id={id}
+          placeholder={placeholder}
+          disabled={isPending}
+          className="w-full border p-2 rounded-md"
+        />
+      ) : (
+        <input
+          {...field}
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          disabled={isPending}
+          className="w-full border p-2 rounded-md"
+        />
+      )}
     </div>
   );
 };

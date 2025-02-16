@@ -15,15 +15,17 @@ const Summary = () => {
   const onCloseCheckoutModal = () => setOpen(false);
 
   const totalPrice = cartItems.reduce(
-    (total, item) => total + Number(item.price),
+    (total, item) => total + Number(item.priceWithDiscount),
     0
   );
 
   const productIds: string[] = [];
+  const productNames: string[] = [];
   let storeId = "";
 
   cartItems.forEach((product) => {
     productIds.push(product.id);
+    productNames.push(product.name);
     storeId = product.storeId;
   });
 
@@ -31,6 +33,7 @@ const Summary = () => {
     <div className="mt-16 rounded-lg bg-gray-50 dark:bg-zinc-900 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
       <CheckoutModal
         open={open}
+        productNames={productNames}
         onClose={onCloseCheckoutModal}
         productIds={productIds}
         storeId={storeId}
@@ -43,7 +46,7 @@ const Summary = () => {
           <div className="text-base font-medium text-gray-900 dark:text-gray-500">
             Order total
           </div>
-          <Currency value={totalPrice} />
+          <Currency value={totalPrice} style="non-discount" />
         </div>
       </div>
       <Button
@@ -51,7 +54,7 @@ const Summary = () => {
         onClick={onOpenCheckoutModal}
         disabled={!cartItems.length}
       >
-        Checkout
+        Pilih domain dan Checkout
       </Button>
     </div>
   );

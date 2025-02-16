@@ -20,9 +20,12 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
         {product?.name}
       </h1>
-      <div className="mt-3 flex justify-between items-end">
+      <div className="mt-3 flex items-center gap-2">
         <div className="text-2xl text-gray-900">
-          <Currency value={product?.price} />
+          <Currency value={product?.price} style="discount" />
+        </div>
+        <div className="text-2xl text-gray-900">
+          <Currency value={product?.priceWithDiscount} style="non-discount" />
         </div>
       </div>
       <hr className="my-4" />
@@ -37,10 +40,15 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
           <h3 className="font-semibold text-black dark:text-gray-700">
             Preview:
           </h3>
-          <div
-            className="size-6 rounded-full border border-gray-600 dark:text-gray-500"
-            style={{ backgroundColor: product?.color?.value }}
-          />
+          <div className="font-bold text-light">
+            <a
+              href={product?.size?.value}
+              target="_blank"
+              className="btn bg-personaPri p-2 rounded-xl"
+            >
+              Live Preview
+            </a>
+          </div>
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-6">
