@@ -5,7 +5,6 @@ import Billboard from "@/components/billboard";
 import MainContainer from "@/components/partials/containers/main-container";
 import ProductList from "@/components/product-list";
 import Link from "next/link";
-import MenuBottom from "@/components/ui/menu-bottom";
 
 interface IHomeProps {
   billboard?: IBillboard;
@@ -21,8 +20,6 @@ const Home = ({ billboard, products }: IHomeProps) => {
           <ProductList title="Featured Products" data={products ?? []} />
         </div>
       </div>
-
-      <MenuBottom />
     </MainContainer>
   );
 };

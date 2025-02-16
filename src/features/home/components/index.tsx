@@ -3,7 +3,6 @@ import ProductList from "@/components/product-list";
 import Image from "next/image";
 import type IProduct from "@/features/product/core/types";
 import Link from "next/link";
-import MenuBottom from "@/components/ui/menu-bottom";
 
 interface IHomeProps {
   products?: IProduct[];
@@ -492,8 +491,6 @@ const Home = ({ products }: IHomeProps) => {
             </div>
           </div>
         </section>
-
-        <MenuBottom />
       </div>
     </MainContainer>
   );

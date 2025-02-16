@@ -8,6 +8,7 @@ import ClerkProvider from "@/components/partials/providers/clerk-provider";
 import ModalProvider from "@/components/partials/providers/modal-provider";
 import ThemeProvider from "@/components/partials/providers/theme-provider";
 import ToastProvider from "@/components/partials/providers/toast-provider";
+import MenuBottom from "@/components/ui/menu-bottom";
 import { cn } from "@/core/utils";
 
 import "./globals.css";
@@ -41,6 +42,7 @@ export default function RootLayout({
             <ToastProvider />
             <Header />
             {children}
+            <MenuBottom />
             <Footer />
           </ThemeProvider>
           <GoogleTagManager gtmId="G-X0K6Z8S8LH" />
