@@ -1,11 +1,38 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const menuBottom = () => {
+const MenuBottom = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
-    <section>
-      <div className="fixed bottom-6 inset-x-0 text-center z-50">
-        <div className="inline-block bg-white shadow-lg border border-solid rounded-full py-3 px-4 dark:bg-neutral-800">
+    <>
+      {/* Tombol untuk menampilkan kembali menu */}
+      {!isVisible && (
+        <button
+          className="fixed bottom-6 right-6 bg-personaGray text-light py-2 px-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+          onClick={() => setIsVisible(true)}
+        >
+          Menu
+        </button>
+      )}
+
+      {/* Menu Bottom dengan transisi */}
+      <div
+        className={`fixed bottom-6 inset-x-0 text-center z-50 transition-all duration-300 transform ${
+          isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"
+        }`}
+      >
+        <div className="relative inline-block bg-light shadow-lg border border-solid rounded-full py-3 px-4 dark:bg-neutral-800">
+          {/* Tombol X untuk menutup menu */}
+          <button
+            className="absolute -top-3 -right-3 bg-personaGray text-light w-6 h-6 rounded-full text-sm flex items-center justify-center transition-transform duration-300 hover:rotate-180"
+            onClick={() => setIsVisible(false)}
+          >
+            ✕
+          </button>
+
           <div className="flex items-center gap-x-1.5">
             <div className="inline-block">
               <Link
@@ -58,8 +85,8 @@ const menuBottom = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
-export default menuBottom;
+export default MenuBottom;

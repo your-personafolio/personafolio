@@ -1,5 +1,4 @@
 export const revalidate = 0;
-import MenuBottom from "@/components/ui/menu-bottom";
 
 const BlogDetailPage = async () => {
   return (
@@ -138,7 +137,6 @@ const BlogDetailPage = async () => {
           </div>
         </div>
       </div>
-      <MenuBottom />
     </>
   );
 };
