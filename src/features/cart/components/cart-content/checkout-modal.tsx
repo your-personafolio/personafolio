@@ -135,7 +135,7 @@ Subdomain: ${data.subdomain + ".personafolio.com" || "Tidak ada"}
 
 Mohon segera diproses. Terima kasih!`;
 
-      const whatsappURL = `https://wa.me/625189296753?text=${encodeURIComponent(
+      const whatsappURL = `https://wa.me/6285189296753?text=${encodeURIComponent(
         message
       )}`;
       window.location.href = whatsappURL;
