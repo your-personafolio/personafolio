@@ -440,7 +440,7 @@ const Home = ({ products }: IHomeProps) => {
 
                   <div className="relative mt-auto p-4">
                     <span className="block text-sm text-neutral-400">
-                      July 19, 2021
+                      Feb 15, 2025
                     </span>
                     <h2 className="mb-2 text-xl font-semibold text-light transition duration-100">
                       Selamat Datang di Persona Folio
