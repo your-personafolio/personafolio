@@ -14,7 +14,7 @@ const Currency = ({ value, style = "non-discount" }: CurrencyProps) => {
     );
   } else {
     return (
-      <div className="font-semibold dark:text-gray-500">
+      <div className="font-semibold dark:text-light">
         {formatPrice(Number(value))}
       </div>
     );

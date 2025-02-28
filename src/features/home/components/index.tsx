@@ -30,7 +30,7 @@ const Home = ({ products }: IHomeProps) => {
                     Persona Folio
                   </span>
                 </h1>
-                <p className="mt-8 text-neutral-400 dark:text-light">
+                <p className="mt-8 text-dark dark:text-neutral-400">
                   Persona Folio adalah sebuah produk berupa website yang bisa
                   kamu gunakan untuk menggunggah portfolio dan profil dengan
                   pilihan tema website yang menarik.
@@ -60,10 +60,10 @@ const Home = ({ products }: IHomeProps) => {
                       <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-y-4 gap-x-12">
                         <div className="relative text-center before:mt-3.5 sm:before:mt-0">
                           <div className="mt-3 sm:mt-5">
-                            <h3 className="text-lg font-semibold text-personaGray dark:text-light">
+                            <h3 className="text-lg font-semibold text-dark dark:text-light">
                               Harga mulai 100 ribuan
                             </h3>
-                            <p className="mt-1 text-sm sm:text-base text-neutral-400">
+                            <p className="mt-1 text-sm sm:text-base text-personaGray dark:text-neutral-400">
                               harga terjangkau, ramah kantong
                             </p>
                           </div>
@@ -71,10 +71,10 @@ const Home = ({ products }: IHomeProps) => {
 
                         <div className="relative text-center before:mt-3.5 sm:before:mt-0">
                           <div className="mt-3 sm:mt-5">
-                            <h3 className="text-lg font-semibold text-personaGray dark:text-light">
+                            <h3 className="text-lg font-semibold text-dark dark:text-light">
                               Gratis domain .personafolio.com
                             </h3>
-                            <p className="mt-1 text-sm sm:text-base text-neutral-400">
+                            <p className="mt-1 text-sm sm:text-base text-personaGray dark:text-neutral-400">
                               bebas pakai domain yang tersedia
                             </p>
                           </div>
@@ -82,10 +82,10 @@ const Home = ({ products }: IHomeProps) => {
 
                         <div className="relative text-center before:mt-3.5 sm:before:mt-0">
                           <div className="mt-3 sm:mt-5">
-                            <h3 className="text-lg font-semibold text-personaGray dark:text-light">
+                            <h3 className="text-lg font-semibold text-dark dark:text-light">
                               24/7
                             </h3>
-                            <p className="mt-1 text-sm sm:text-base text-neutral-400">
+                            <p className="mt-1 text-sm sm:text-base text-personaGray dark:text-neutral-400">
                               Persona Folio siap melayani 24/7
                             </p>
                           </div>
@@ -110,13 +110,13 @@ const Home = ({ products }: IHomeProps) => {
               <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5">
                 <div className="space-y-6 sm:space-y-8">
                   <div className="space-y-2 md:space-y-4">
-                    <h2 className="font-bold text-3xl lg:text-4xl text-personaGray dark:text-light">
+                    <h2 className="font-bold text-3xl lg:text-4xl text-dark dark:text-light">
                       Waktunya upgrade portfolio kalian dari PPT atau PDF ke
                       Website!
                     </h2>
                   </div>
 
-                  <ul className="mt-8 divide-y border-y *:py-3 *:flex *:items-center *:gap-3 text-neutral-400">
+                  <ul className="mt-8 divide-y border-y *:py-3 *:flex *:items-center *:gap-3 text-personaGray dark:text-neutral-400">
                     <li>
                       <Image
                         src={
@@ -248,7 +248,7 @@ const Home = ({ products }: IHomeProps) => {
                     </div>
 
                     <div className="grow pt-0.5 pb-8 sm:pb-12">
-                      <p className="text-sm lg:text-base text-neutral-400">
+                      <p className="text-sm lg:text-base text-dark dark:text-neutral-400">
                         <span className="text-light">
                           Pergi ke halaman Cart!
                         </span>
@@ -286,7 +286,7 @@ const Home = ({ products }: IHomeProps) => {
                     </div>
 
                     <div className="grow pt-0.5 pb-8 sm:pb-12">
-                      <p className="text-sm md:text-base text-neutral-400">
+                      <p className="text-sm md:text-base text-dark dark:text-neutral-400">
                         <span className="text-light">
                           Bayar dan kirim bukti pembayaran ke wa admin. Website
                           akan segera diproses
@@ -333,7 +333,7 @@ const Home = ({ products }: IHomeProps) => {
           <div className=" py-6 sm:py-8 lg:py-12">
             <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
               <div className="mb-10 md:mb-16">
-                <h2 className="mb-4 text-center text-2xl font-bold text-personaGray dark:text-light md:mb-6 lg:text-3xl">
+                <h2 className="mb-4 text-center text-2xl font-bold text-dark dark:text-light md:mb-6 lg:text-3xl">
                   Frequently asked questions
                 </h2>
               </div>
@@ -343,7 +343,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Apakah perlu membayar langganan website perbulan/tahun?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Tidak, cukup sekali bayar dan kamu bisa memiliki website
                     tanpa perlu biaya langganan.
                   </p>
@@ -353,7 +353,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Apakah bisa menggunakan domain sendiri?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Bisa, seandainya kamu memiliki domain sendiri dan ingin
                     diintegrasikan dengan personafolio bisa, tapi akan dikenakan
                     biaya tambahan.
@@ -364,7 +364,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Siapa yang cocok menggunakan layanan ini?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Mahasiswa yang ingin menampilkan portofolio tugas, proyek,
                     magang, atau prestasi akademik. Pekerja yang ingin
                     memperkuat personal branding dan menampilkan pengalaman
@@ -377,7 +377,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Berapa lama waktu pengerjaan website?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Tidak butuh waktu yang lama, cukup menunggu waktu maksimal{" "}
                     <strong>30 menit</strong>.
                   </p>
@@ -387,7 +387,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Apakah saya bisa menambahkan fitur khusus?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Tidak untuk saat ini. Persona Folio hanya menyediakan
                     website sesuai dengan tema yang sudah tersedia dan kamu bisa
                     megedit isinya.
@@ -398,7 +398,7 @@ const Home = ({ products }: IHomeProps) => {
                   <h3 className="mb-2 text-lg font-semibold text-personaSec md:text-xl">
                     Bagaimana sistem pembayarannya?
                   </h3>
-                  <p className="text-neutral-400">
+                  <p className="text-personaGray dark:text-neutral-400">
                     Setelah kamu mengisi form dan klik chekout, akan diarahkan
                     ke wa admin untuk melakukan pembayaran. Pembayaran bisa
                     melalui transfer bank atau melalui Gopay.
@@ -414,11 +414,11 @@ const Home = ({ products }: IHomeProps) => {
           <div className=" py-6 sm:py-8 lg:py-12">
             <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
               <div className="mb-10 md:mb-16">
-                <h2 className="mb-4 text-center text-2xl font-bold text-personaGray dark:text-light md:mb-6 lg:text-3xl">
+                <h2 className="mb-4 text-center text-2xl font-bold text-dark dark:text-light md:mb-6 lg:text-3xl">
                   Blog
                 </h2>
 
-                <p className="mx-auto max-w-screen-md text-center text-neutral-400 md:text-lg">
+                <p className="mx-auto max-w-screen-md text-center text-personaGray dark:text-neutral-400 md:text-lg">
                   Selalu terhubung dan update berbagai informasi menarik dari
                   Persona Folio.
                 </p>
@@ -439,7 +439,7 @@ const Home = ({ products }: IHomeProps) => {
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent md:via-transparent"></div>
 
                   <div className="relative mt-auto p-4">
-                    <span className="block text-sm text-neutral-400">
+                    <span className="block text-sm text-dark dark:text-neutral-400">
                       Feb 15, 2025
                     </span>
                     <h2 className="mb-2 text-xl font-semibold text-light transition duration-100">
@@ -474,7 +474,7 @@ const Home = ({ products }: IHomeProps) => {
                     Support center
                   </h2>
 
-                  <p className="mb-8 max-w-md text-neutral-400">
+                  <p className="mb-8 max-w-md text-personaGray dark:text-neutral-400">
                     Apabila kamu mengalami kendala atau pertanyaan, jangan
                     sungkan untuk menanyakannya. Segera hubungi admin untuk
                     informasi lebih lanjut!
