@@ -73,7 +73,9 @@ const ProductItem = ({ data }: { data: IProduct }) => {
       {/* Description */}
       <div>
         <p className="font-semibold text-lg">{data.name}</p>
-        <p className="text-sm text-gray-500">{data.category?.name}</p>
+        <p className="text-sm text-personaGray dark:text-neutral-400">
+          {data.category?.name}
+        </p>
       </div>
       {/* Price */}
       <div className="block">
