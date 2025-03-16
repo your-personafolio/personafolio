@@ -21,6 +21,7 @@ const urbanist = Urbanist({
 export const metadata: Metadata = {
   title: "Persona Folio",
   description: "Developed by Persona Folio",
+  robots: "index, follow",
 };
 
 export default function RootLayout({
