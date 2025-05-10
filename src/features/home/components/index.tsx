@@ -3,6 +3,7 @@ import ProductList from "@/components/product-list";
 import Image from "next/image";
 import type IProduct from "@/features/product/core/types";
 import Link from "next/link";
+import YouTubeEmbed from "@/components/YoutubeEmbed";
 
 interface IHomeProps {
   products?: IProduct[];
@@ -195,7 +196,10 @@ const Home = ({ products }: IHomeProps) => {
         <section>
           <div className="bg-neutral-900 rounded-xl dark:bg-gray-500 dark:bg-clip-padding dark:backdrop-filter  dark:backdrop-blur dark:bg-opacity-10 dark:backdrop-saturate-100 dark:backdrop-contrast-100">
             <div className="max-w-5xl px-4 xl:px-0 py-5 lg:pb-20 mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16 items-center">
+              <div className="grid md:relative grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div className="block md:absolute md:bottom-[200px] md:left-[90px] z-10">
+                  <YouTubeEmbed className="w-full h-[200px] rounded-lg" />
+                </div>
                 <div className="relative m-auto aspect-w-16 aspect-h-9 lg:aspect-none hidden md:block">
                   <div className="absolute lg:bottom-20 bottom-5 md:-start-1 -start-2 p-4 rounded-lg shadow-md dark:shadow-gray-800 bg-white dark:bg-slate-900 m-3 w-auto text-center">
                     <span className="text-3xl font-medium mb-0">
