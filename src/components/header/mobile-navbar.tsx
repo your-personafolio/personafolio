@@ -4,7 +4,6 @@ import { UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
-import ModeToggle from "@/components/header/mode-toggle";
 import {
   Sheet,
   SheetContent,
@@ -24,7 +23,7 @@ const MobileNavbar = () => {
           <div className="mt-6 flex items-center justify-between">
             <h2 className="font-bold">STORE</h2>
 
-            <ModeToggle />
+            {/* <ModeToggle /> */}
           </div>
           <nav className="flex flex-col gap-2 mt-3">
             <Link

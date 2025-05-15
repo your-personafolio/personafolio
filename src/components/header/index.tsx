@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import CartButton from "@/components/header/cart-button";
 import MobileNavbar from "@/components/header/mobile-navbar";
-import ModeToggle from "@/components/header/mode-toggle";
+
 import Navbar from "@/components/header/navbar";
 import MainContainer from "@/components/partials/containers/main-container";
 
@@ -26,7 +26,7 @@ const Header = async () => {
             </div>
           </div>
           <div className="hidden lg:flex lg:gap-x-3">
-            <ModeToggle />
+            {/* <ModeToggle /> */}
             <CartButton />
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import ClerkProvider from "@/components/partials/providers/clerk-provider";
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -28,22 +29,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("antialiased", urbanist.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ModalProvider />
-          <ToastProvider />
-          <Header />
-          {children}
-          <MenuBottom />
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={cn("antialiased", urbanist.className)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ModalProvider />
+            <ToastProvider />
+            <Header />
+            {children}
+            <MenuBottom />
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
