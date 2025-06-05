@@ -3,11 +3,9 @@
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
-import type IProduct from "@/features/product/core/types";
-
 import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
-import useCart from "@/core/hooks/use-cart.hooks";
+
 import CheckoutModal from "@/features/cart/components/cart-content/checkout-modal";
 import { useState } from "react";
 

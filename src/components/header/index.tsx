@@ -1,10 +1,8 @@
 import Link from "next/link";
 
-import CartButton from "@/components/header/cart-button";
-import MobileNavbar from "@/components/header/mobile-navbar";
-
 import Navbar from "@/components/header/navbar";
 import MainContainer from "@/components/partials/containers/main-container";
+import ModeToggle from "./mode-toggle";
 
 const Header = async () => {
   return (
@@ -21,13 +19,11 @@ const Header = async () => {
               <Navbar />
             </div>
             <div className="lg:hidden flex gap-2 items-center">
-              <MobileNavbar />
-              <CartButton />
+              <ModeToggle />
             </div>
           </div>
           <div className="hidden lg:flex lg:gap-x-3">
-            {/* <ModeToggle /> */}
-            <CartButton />
+            <ModeToggle />
           </div>
         </div>
       </MainContainer>

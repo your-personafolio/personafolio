@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Currency from "@/components/ui/currency";
-import useCart from "@/core/hooks/use-cart.hooks";
-import usePreviewModal from "@/core/hooks/use-preview-modal.hooks";
 
 import slugify from "slugify";
 

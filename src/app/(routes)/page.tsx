@@ -18,9 +18,6 @@ export default async function HomePage() {
     fetchBlog(),
     fetchProduct(),
   ]);
-  // const products = await getProducts({
-  //   isFeatured: true,
-  // });
 
   console.log("data product", products);
   return (
