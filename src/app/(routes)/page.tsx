@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import MainContainer from "@/components/partials/containers/main-container";
 import Hero from "@/components/Hero";
 import ProductList from "@/components/product-list";
@@ -7,10 +8,89 @@ import FAQ from "@/components/FAQ";
 import Support from "@/components/Support";
 import Blog from "@/components/Blog";
 import BlogList from "@/components/Blog/BlogList";
-
-import { fetchHero, fetchBlog, fetchProduct } from "@/lib/notion";
 import ProductItem from "@/components/ui/product-item";
+
+import {
+  fetchHero,
+  fetchBlog,
+  fetchProduct,
+  fetchHeader,
+  fetchMetaHead,
+} from "@/lib/notion";
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const [header, metaHead] = await Promise.all([
+    fetchHeader(),
+    fetchMetaHead(),
+  ]);
+
+  const title = metaHead?.heading || "Persona Folio";
+  const description = metaHead?.description || "";
+  const keywords = metaHead?.keyword?.split(",") +
+    [
+      ,
+      "persona",
+      "folio",
+      "personafolio",
+      "portfolio",
+      "blog",
+      "website",
+      "viodream",
+      "forester",
+      "deep-sky",
+    ] || [
+    "persona",
+    "folio",
+    "personafolio",
+    "portfolio",
+    "blog",
+    "website",
+    "viodream",
+    "forester",
+    "deep-sky",
+  ];
+  const author = metaHead?.author || "Persona Folio";
+  const ogUrl = metaHead?.websiteUrl || "https://persona-viodream.vercel.app";
+  const favicon = header?.logo[0].url || "/persona-logo.png";
+
+  return {
+    title,
+    description,
+    keywords,
+    authors: [{ name: author }],
+    openGraph: {
+      title,
+      description,
+      url: ogUrl,
+      siteName: author,
+      type: "website",
+    },
+    icons: favicon
+      ? {
+          icon: [
+            {
+              url: favicon,
+              type: "image/x-icon",
+              sizes: "32x32",
+            },
+          ],
+          apple: [
+            {
+              url: favicon,
+              type: "image/x-icon",
+              sizes: "32x32",
+            },
+          ],
+        }
+      : undefined,
+    metadataBase: new URL(ogUrl),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function HomePage() {
   const [hero, blog, products] = await Promise.all([
@@ -19,7 +99,6 @@ export default async function HomePage() {
     fetchProduct(),
   ]);
 
-  console.log("data product", products);
   return (
     <>
       <MainContainer>

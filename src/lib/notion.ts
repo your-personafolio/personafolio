@@ -5,6 +5,8 @@ import { getEnv } from "./env";
 const NHERO = getEnv("NHERO");
 const NBLOG = getEnv("NBLOG");
 const NPRODUCT = getEnv("NPRODUCT");
+const NHEADER = getEnv("NHEADER");
+const NMETAHEAD = getEnv("NMETAHEAD");
 
 // Tipe dasar untuk item Notion
 export interface NotionRow {
@@ -49,6 +51,13 @@ export const fetchSingleRow = async (
 // Fetch Hero
 export const fetchHero = (): Promise<NotionRow | null> => {
   return fetchSingleRow(NHERO);
+};
+
+export const fetchHeader = (): Promise<NotionRow | null> => {
+  return fetchSingleRow(NHEADER);
+};
+export const fetchMetaHead = (): Promise<NotionRow | null> => {
+  return fetchSingleRow(NMETAHEAD);
 };
 
 // allpost

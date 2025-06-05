@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 
 import Footer from "@/components/footer";
@@ -23,12 +22,6 @@ import "katex/dist/katex.min.css";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-
-export const metadata: Metadata = {
-  title: "Persona Folio",
-  description: "Developed by Persona Folio",
-  robots: "NOODP, follow",
-};
 
 export default function RootLayout({
   children,

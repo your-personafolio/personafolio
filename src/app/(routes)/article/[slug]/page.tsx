@@ -6,9 +6,83 @@ import ClientRenderer from "./ClientRenderer";
 import { Metadata } from "next";
 import { NotionAPI } from "notion-client";
 
-import { fetchBlog } from "@/lib/notion";
+import { fetchBlog, fetchHeader, fetchMetaHead } from "@/lib/notion";
 
 export const dynamic = "force-dynamic";
+export async function generateMetadata(): Promise<Metadata> {
+  const [header, metaHead, blog] = await Promise.all([
+    fetchHeader(),
+    fetchMetaHead(),
+    fetchBlog(),
+  ]);
+
+  const heading = blog?.[0]?.title;
+  const title = `${metaHead?.heading} - ${heading}` || "Persona Folio";
+  const description = metaHead?.description || "";
+  const keywords = metaHead?.keyword?.split(",") +
+    [
+      ,
+      "persona",
+      "folio",
+      "personafolio",
+      "portfolio",
+      "blog",
+      "website",
+      "viodream",
+      "forester",
+      "deep-sky",
+    ] || [
+    "persona",
+    "folio",
+    "personafolio",
+    "portfolio",
+    "blog",
+    "website",
+    "viodream",
+    "forester",
+    "deep-sky",
+  ];
+  const author = metaHead?.author || "Persona Folio";
+  const ogUrl = metaHead?.websiteUrl || "https://persona-viodream.vercel.app";
+  const favicon = header?.logo[0].url || "/persona-logo.png";
+
+  return {
+    title,
+    description,
+    keywords,
+    authors: [{ name: author }],
+    openGraph: {
+      title,
+      description,
+      url: ogUrl,
+      siteName: author,
+      type: "website",
+    },
+    icons: favicon
+      ? {
+          icon: [
+            {
+              url: favicon,
+              type: "image/x-icon",
+              sizes: "32x32",
+            },
+          ],
+          apple: [
+            {
+              url: favicon,
+              type: "image/x-icon",
+              sizes: "32x32",
+            },
+          ],
+        }
+      : undefined,
+    metadataBase: new URL(ogUrl),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function ArticleDetail({ params }: any) {
   const [blogs] = await Promise.all([fetchBlog()]);
