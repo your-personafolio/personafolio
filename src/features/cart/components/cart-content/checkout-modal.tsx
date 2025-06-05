@@ -8,16 +8,12 @@ import { z } from "zod";
 import CheckoutFieldBox from "@/features/cart/components/cart-content/checkout-field-box";
 import { Button } from "@/components/ui/button";
 import Modal from "@/components/ui/modal";
-import useCart from "@/core/hooks/use-cart.hooks";
-import { toast } from "@/core/utils";
+import { formatPrice, toast } from "@/core/utils";
 
 const checkoutFormSchema = z.object({
   fullName: z.string().min(3, "Nama lengkap harus diisi"),
   phone: z.string().min(10, "Nomor WA tidak valid"),
-  address: z.string().min(5, "Asal daerah harus diisi"),
-  status: z.enum(["student", "worker", "general"]),
-  purpose: z.string().min(10, "Tujuan harus diisi"),
-  institution: z.string().optional(),
+  status: z.enum(["instagram", "website"]),
   subdomain: z.string().optional(),
 });
 
@@ -25,9 +21,8 @@ type TCheckoutFormData = z.infer<typeof checkoutFormSchema>;
 
 interface ICheckoutModalProps {
   open: boolean;
-  storeId: string;
-  productIds: string[];
-  productNames: string[];
+  productPrices: any;
+  productNames: any;
   onClose: () => void;
 }
 
@@ -35,15 +30,23 @@ const CheckoutModal = ({
   open,
 
   productNames = [],
+  productPrices = [],
   onClose,
 }: ICheckoutModalProps) => {
   const [isPending, startTransition] = useTransition();
-  const removeAllItems = useCart((state) => state.removeAll);
+
   const [subdomain, setSubdomain] = useState("");
   const [isChecking, setIsChecking] = useState(false);
   const [isAvailable, setIsAvailable] = useState<boolean | null>(null);
   const [isEditing, setIsEditing] = useState(true);
   const [subdomainError, setSubdomainError] = useState("");
+
+  const [defaultValues, setDefaultValues] = useState<TCheckoutFormData>({
+    fullName: "",
+    phone: "",
+    status: "instagram",
+    subdomain: "",
+  });
 
   const {
     control,
@@ -53,14 +56,29 @@ const CheckoutModal = ({
     formState: { isValid },
   } = useForm<TCheckoutFormData>({
     resolver: zodResolver(checkoutFormSchema),
-    defaultValues: JSON.parse(localStorage.getItem("checkoutForm") || "{}"),
+    defaultValues,
   });
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("checkoutForm") || "{}");
+
+    setDefaultValues({
+      fullName: savedData.fullName || "",
+      phone: savedData.phone || "",
+      status: savedData.status || "instagram",
+      subdomain: savedData.subdomain || "",
+    });
+
     if (savedData.subdomain) {
       setSubdomain(savedData.subdomain);
       setIsEditing(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("clearOnReturn")) {
+      localStorage.removeItem("checkoutForm");
+      localStorage.removeItem("clearOnReturn");
     }
   }, []);
 
@@ -111,37 +129,28 @@ const CheckoutModal = ({
 
   const onSubmit = (data: TCheckoutFormData) => {
     startTransition(() => {
-      const formattedProducts =
-        productNames?.length > 0
-          ? productNames.join(", ")
-          : "Produk tidak tersedia";
-
       const message = `
 *Checkout Order*
+Produk: ${productNames}
+Subdomain: ${data.subdomain + ".personafolio.com" || "Tidak ada"}
+Harga: ${formatPrice(Number(productPrices))}
 Nama: ${data.fullName}
 No. WA: ${data.phone}
-Asal daerah: ${data.address}
-Status: ${
-        data.status === "student"
-          ? "Mahasiswa"
-          : data.status === "worker"
-          ? "Pekerja"
-          : "Umum"
+Tahu informasi dari: ${
+        data.status === "instagram"
+          ? "Instagram"
+          : data.status === "website"
+          ? "Website"
+          : ""
       }
-Asal Instansi: ${data.institution || "-"}
-Tujuan pembelian: ${data.purpose}
-Produk: ${formattedProducts} ✅
-Subdomain: ${data.subdomain + ".personafolio.com" || "Tidak ada"}
-
 Mohon segera diproses. Terima kasih!`;
 
-      const whatsappURL = `https://wa.me/6285189296753?text=${encodeURIComponent(
-        message
-      )}`;
-      window.location.href = whatsappURL;
-
-      removeAllItems();
-      toast.success("Checkout berhasil! Mengarahkan ke WhatsApp...");
+      setTimeout(() => {
+        window.location.href = `https://wa.me/6285189296753?text=${encodeURIComponent(
+          message
+        )}`;
+        localStorage.setItem("clearOnReturn", "true");
+      }, 500);
     });
   };
 
@@ -230,45 +239,17 @@ Mohon segera diproses. Terima kasih!`;
 
           {/* ✅ Status (Mahasiswa/Pekerja/Umum) */}
           <div>
-            <label className="block text-sm font-medium">Status</label>
+            <label className="block text-sm font-medium">
+              Tahu informasi dari?
+            </label>
             <select
               {...control.register("status")}
               className="w-full border p-2 rounded-md"
             >
-              <option value="student">Mahasiswa</option>
-              <option value="worker">Pekerja</option>
-              <option value="general">Umum</option>
+              <option value="instagram">Instagram</option>
+              <option value="website">Website</option>
             </select>
           </div>
-
-          <CheckoutFieldBox
-            control={control}
-            type="text"
-            name="institution"
-            id="institution"
-            placeholder="Nama instansi (opsional)"
-            label="Asal Instansi"
-            isPending={isPending}
-          />
-          <CheckoutFieldBox
-            control={control}
-            type="text"
-            name="address"
-            id="address"
-            placeholder="misal: Yogyakarta"
-            label="Asal daerah"
-            isPending={isPending}
-          />
-          <CheckoutFieldBox
-            control={control}
-            type="textarea" // Menggunakan textarea jika CheckoutFieldBox mendukungnya
-            name="purpose"
-            id="purpose"
-            placeholder="misal:Untuk membuat personal branding melalui website pribadi (minimal 10 karakter)"
-            label="Tujuan"
-            isPending={isPending}
-            textarea
-          />
 
           <Button type="submit" disabled={!isValid || isPending}>
             Checkout

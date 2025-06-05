@@ -8,25 +8,45 @@ import type IProduct from "@/features/product/core/types";
 import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/core/hooks/use-cart.hooks";
+import CheckoutModal from "@/features/cart/components/cart-content/checkout-modal";
+import { useState } from "react";
 
-const ProductInformation = ({ product }: { product?: IProduct }) => {
-  const cart = useCart();
+interface ProductInformation {
+  title: string;
+  category: string;
+  price: string;
+  discount: string;
+  urlPreview: string;
+}
 
-  const onAddToCart = () => {
-    cart.addItem(product!);
-  };
+const ProductInformation = ({
+  title,
+  category,
+  price,
+  discount,
+  urlPreview,
+}: ProductInformation) => {
+  const [open, setOpen] = useState(false);
 
+  const onOpenCheckoutModal = () => setOpen(true);
+  const onCloseCheckoutModal = () => setOpen(false);
   return (
     <div>
+      <CheckoutModal
+        open={open}
+        productNames={title}
+        onClose={onCloseCheckoutModal}
+        productPrices={discount}
+      />
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-        {product?.name}
+        {title}
       </h1>
       <div className="mt-3 flex items-center gap-2">
         <div className="text-2xl text-gray-900">
-          <Currency value={product?.price} style="discount" />
+          <Currency value={price} style="discount" />
         </div>
         <div className="text-2xl text-gray-900">
-          <Currency value={product?.priceWithDiscount} style="non-discount" />
+          <Currency value={discount} style="non-discount" />
         </div>
       </div>
       <hr className="my-4" />
@@ -35,7 +55,7 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
           <h3 className="font-semibold text-black dark:text-gray-700">
             Category:
           </h3>
-          <div className="dark:text-gray-500">{product?.category?.name}</div>
+          <div className="dark:text-gray-500">{category}</div>
         </div>
         <div className="flex items-center gap-x-4">
           <h3 className="font-semibold text-black dark:text-gray-700">
@@ -43,7 +63,7 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
           </h3>
           <div className="font-bold text-light">
             <a
-              href={product?.size?.value}
+              href={urlPreview}
               target="_blank"
               className="btn bg-personaPri p-2 rounded-xl flex items-center "
             >
@@ -62,9 +82,9 @@ const ProductInformation = ({ product }: { product?: IProduct }) => {
       <div className="mt-10 flex items-center gap-x-6">
         <Button
           className="flex items-center gap-x-2 rounded-full dark:bg-zinc-800 hover:dark:bg-zinc-900 dark:text-white dark:border-zinc-950"
-          onClick={onAddToCart}
+          onClick={onOpenCheckoutModal}
         >
-          Add To Cart <ShoppingCart />
+          Isi Form dan Checkout <ShoppingCart />
         </Button>
       </div>
     </div>

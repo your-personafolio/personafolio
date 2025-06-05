@@ -17,7 +17,7 @@ const Home = ({ billboard, products }: IHomeProps) => {
       <div className="space-y-10 pb-10">
         <Billboard data={billboard} />
         <div className="flex flex-col gap-y-8">
-          <ProductList title="Featured Products" data={products ?? []} />
+          {/* <ProductList title="Featured Products" data={products ?? []} /> */}
         </div>
       </div>
     </MainContainer>

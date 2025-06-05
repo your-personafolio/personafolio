@@ -32,9 +32,9 @@ const Category = ({ products, colors, sizes, category }: ICategoryProps) => {
             <div className="mt-6 lg:col-span-4 lg:mt-0 max-sm:px-2">
               {products?.length === 0 && <NoResults />}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {products?.map((product) => (
+                {/* {products?.map((product) => (
                   <ProductItem key={product.id} data={product} />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

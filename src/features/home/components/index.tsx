@@ -101,7 +101,7 @@ const Home = ({ products }: IHomeProps) => {
         </div>
 
         <div className="flex flex-col gap-y-8">
-          <ProductList title="Featured Products" data={products ?? []} />
+          {/* <ProductList title="Featured Products" data={products ?? []} /> */}
         </div>
 
         {/* Alasan memilih Personafolio */}

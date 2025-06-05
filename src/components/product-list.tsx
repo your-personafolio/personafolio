@@ -1,25 +1,18 @@
-import type IProduct from "@/features/product/core/types";
-
-import NoResults from "@/components/ui/no-results";
-import ProductItem from "@/components/ui/product-item";
+import { ReactNode } from "react";
 
 interface IProductListProps {
   title: string;
-  data: IProduct[];
+  children: ReactNode;
 }
 
-const ProductList = ({ title, data }: IProductListProps) => {
+export default function ProductList({ title, children }: IProductListProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" id="product">
       <h3 className="font-bold text-3xl">{title}</h3>
-      {data.length === 0 && <NoResults />}
+
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {data.map((product) => (
-          <ProductItem key={product.id} data={product} />
-        ))}
+        {children}
       </div>
     </div>
   );
-};
-
-export default ProductList;
+}

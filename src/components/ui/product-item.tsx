@@ -1,63 +1,50 @@
-"use client";
-
 import { Expand, ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
-
-import type IProduct from "@/features/product/core/types";
-
-import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/core/hooks/use-cart.hooks";
 import usePreviewModal from "@/core/hooks/use-preview-modal.hooks";
 
-const ProductItem = ({ data }: { data: IProduct }) => {
-  const router = useRouter();
-  const previewModal = usePreviewModal();
-  const cart = useCart();
+import slugify from "slugify";
 
-  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
+interface ProductItemProps {
+  title: string;
+  category: string;
+  price: string;
+  discount: string;
+  thumbnail: string;
+}
 
-    previewModal.onOpen(data);
-  };
-
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-
-    cart.addItem(data);
-  };
+export default function ProductItem(props: ProductItemProps) {
+  const { title, category, price, discount, thumbnail } = props;
+  const slug = slugify(title).toLowerCase();
 
   const productItemActionButtonClassNames =
     "rounded-full transition-transform hover:scale-125 bg-white dark:bg-zinc-800 hover:bg-white hover:dark:bg-zinc-900";
 
-  const handleClick = () => {
-    router.push(`/product/${data?.id}`);
-  };
-
   return (
-    <div
-      className=" group cursor-pointer rounded-xl border p-3 space-y-3"
-      onClick={handleClick}
-    >
-      <div className="aspect-square rounded-xl bg-gray-100 relative">
-        <Image
-          src={data?.images?.[0]?.url}
-          fill
-          alt="Product image"
-          className="aspect-square object-cover rounded-md"
-        />
-        <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-          <div className="flex gap-x-6 justify-center">
-            <Button
+    <div className=" group cursor-pointer rounded-xl border p-3 space-y-3">
+      <Link href={`/product/${slug}`}>
+        <div className="aspect-square rounded-xl bg-gray-100 relative overflow-hidden">
+          <Image
+            src={thumbnail}
+            blurDataURL={thumbnail}
+            placeholder="blur"
+            fill
+            alt="Product image"
+            className="aspect-square object-cover rounded-md transition transition-300 hover:scale-105"
+          />
+          <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+            <div className="flex gap-x-6 justify-center">
+              {/* <Button
               size="icon"
               className={productItemActionButtonClassNames}
               onClick={onPreview}
             >
               <Expand size={20} className="text-gray-600 dark:text-white" />
-            </Button>
-            <Button
+            </Button> */}
+              {/* <Button
               size="icon"
               className={productItemActionButtonClassNames}
               onClick={onAddToCart}
@@ -66,24 +53,23 @@ const ProductItem = ({ data }: { data: IProduct }) => {
                 size={20}
                 className="text-gray-600 dark:text-white"
               />
-            </Button>
+            </Button> */}
+            </div>
           </div>
         </div>
-      </div>
-      {/* Description */}
-      <div>
-        <p className="font-semibold text-lg">{data.name}</p>
-        <p className="text-sm text-personaGray dark:text-neutral-400">
-          {data.category?.name}
-        </p>
-      </div>
-      {/* Price */}
-      <div className="block">
-        <Currency value={data?.priceWithDiscount} style="non-discount" />
-        <Currency value={data?.price} style="discount" />
-      </div>
+        {/* Description */}
+        <div>
+          <p className="font-semibold text-lg">{title}</p>
+          <p className="text-sm text-personaGray dark:text-neutral-400">
+            {category}
+          </p>
+        </div>
+        {/* Price */}
+        <div className="block">
+          <Currency value={discount} style="non-discount" />
+          <Currency value={price} style="discount" />
+        </div>
+      </Link>
     </div>
   );
-};
-
-export default ProductItem;
+}

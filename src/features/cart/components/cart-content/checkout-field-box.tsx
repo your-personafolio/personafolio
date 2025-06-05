@@ -8,7 +8,7 @@ interface CheckoutFieldBoxProps {
   id: string;
   placeholder: string;
   label: string;
-  isPending: boolean;
+  isPending?: boolean;
   textarea?: boolean;
 }
 
