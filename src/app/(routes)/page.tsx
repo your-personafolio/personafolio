@@ -18,7 +18,7 @@ import {
   fetchMetaHead,
   fetchBanner,
 } from "@/lib/notion";
-import { title } from "process";
+
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -95,11 +95,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [hero, blog, products, banner] = await Promise.all([
+  const [hero, blog, products, banner, header] = await Promise.all([
     fetchHero(),
     fetchBlog(),
     fetchProduct(),
     fetchBanner(),
+    fetchHeader(),
   ]);
 
   return (
@@ -122,12 +123,12 @@ export default async function HomePage() {
             <ProductList title="Feature Products">
               {products.map((product) => (
                 <ProductItem
-                  title={product?.title}
-                  thumbnail={product?.thumbnail[0].url}
-                  category={product?.category}
-                  discount={product?.discount}
-                  price={product?.price}
-                  urlPreview={product?.urlPreview}
+                  title={product?.title || " "}
+                  thumbnail={product?.thumbnail[0].url || " "}
+                  category={product?.category || " "}
+                  discount={product?.discount || " "}
+                  price={product?.price || " "}
+                  urlPreview={product?.urlPreview || " "}
                   key={product.id}
                 />
               ))}
@@ -135,16 +136,16 @@ export default async function HomePage() {
           </div>
 
           <Promotion />
-          <HowOrder />
+          <HowOrder urlEmbed={header?.embedYoutube || " "} />
           <FAQ />
 
           <Blog>
             {blog.map((item) => (
               <BlogList
-                title={item?.title}
-                thumbnail={item?.thumbnail[0].url}
-                published={item?.published}
-                key={item?.id}
+                title={item?.title || " "}
+                thumbnail={item?.thumbnail[0].url || " "}
+                published={item?.published || " "}
+                key={item?.id || " "}
               />
             ))}
           </Blog>
