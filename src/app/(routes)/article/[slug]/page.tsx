@@ -85,11 +85,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ArticleDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function ArticleDetail({ params }: any) {
   const slug = params.slug;
 
   const blogs = await fetchBlog();
