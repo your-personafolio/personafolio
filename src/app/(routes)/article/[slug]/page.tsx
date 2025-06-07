@@ -85,10 +85,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ArticleDetail({ params }: any) {
-  const [blogs] = await Promise.all([fetchBlog()]);
+export default async function ArticleDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const slug = params.slug;
 
-  const slug = params?.slug;
+  const blogs = await fetchBlog();
 
   const blog = blogs.find((b) => slugify(b.title).toLowerCase() === slug);
 
@@ -170,4 +174,12 @@ export default async function ArticleDetail({ params }: any) {
       </MainContainer>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const blogs = await fetchBlog();
+
+  return blogs.map((b) => ({
+    slug: slugify(b.title).toLowerCase(),
+  }));
 }
