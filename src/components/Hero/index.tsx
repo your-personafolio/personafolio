@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Banner from "@/components/ui/banner";
 
 interface HeroProps {
   heading: string;
@@ -7,24 +8,30 @@ interface HeroProps {
   br: string;
   btn: string;
   url: string;
+  bannerTitle: string;
+  bannerDesc: string;
+  bannerUrl: string;
 }
 
 export default function Hero(props: HeroProps) {
-  const { heading, specialtext, desc, br, btn, url } = props;
+  const {
+    heading,
+    specialtext,
+    desc,
+    br,
+    btn,
+    url,
+    bannerDesc,
+    bannerTitle,
+    bannerUrl,
+  } = props;
   return (
     <>
       <div className="relative" id="home">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-50"
-        >
-          <div className="blur-[106px] h-52 bg-gradient-to-r from-personaPurple to-personaPri"></div>
-          <div className="blur-[106px] h-56 bg-gradient-to-br from-personaSec to-personaBlue"></div>
-        </div>
-
         <div className="ini perlu di ubah">
           <div className="relative pt-36 ml-auto">
             <div className="lg:w-2/3 text-center mx-auto">
+              <Banner title={bannerTitle} desc={bannerDesc} url={bannerUrl} />
               <h1 className="text-personaGray text-balance dark:text-light font-bold text-5xl md:text-6xl xl:text-7xl">
                 {heading}
                 <br /> {br}{" "}
@@ -36,9 +43,9 @@ export default function Hero(props: HeroProps) {
               <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                 <Link
                   href={url}
-                  className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  className="relative flex px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                 >
-                  <span className="relative text-base font-semibold text-light dark:text-personaDark">
+                  <span className="relative text-base font-semibold text-light">
                     {btn}
                   </span>
                 </Link>

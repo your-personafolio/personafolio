@@ -1,5 +1,3 @@
-import { usePathname } from "next/navigation";
-
 import { Urbanist } from "next/font/google";
 
 import Footer from "@/components/footer";

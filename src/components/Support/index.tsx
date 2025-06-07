@@ -8,13 +8,12 @@ export default function Support() {
         <div className="py-6 sm:py-8 lg:py-12">
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
             <div className="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80 dark:bg-gray-500 dark:bg-clip-padding dark:backdrop-filter  dark:backdrop-blur dark:bg-opacity-10 dark:backdrop-saturate-100 dark:backdrop-contrast-100">
-              <div className="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
+              <div className="sm:h-[320px] sm:w-[400px] h-[200px] w-full relative overflow-hidden ">
                 <Image
                   src="/persona-img-4.jpg"
                   loading="lazy"
-                  width={422}
-                  height={320}
-                  className=" object-cover object-center"
+                  fill
+                  className="object-cover object-center"
                   alt="Photo by Andras Vas"
                 />
               </div>
@@ -31,10 +30,12 @@ export default function Support() {
                 </p>
 
                 <Link
-                  className=" rounded-lg bg-personaPri px-2  py-3 text-center text-sm font-semibold text-light outline-none ring-indigo-300 md:text-base"
+                  className="relative flex px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                   href="https://wa.me/6285189296753?text=Halo,%20Persona Folio!"
                 >
-                  Hubungi kami!
+                  <span className="relative text-base font-semibold text-light">
+                    Hubungi Admin!
+                  </span>
                 </Link>
               </div>
             </div>

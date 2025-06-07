@@ -60,6 +60,7 @@ const CheckoutModal = ({
   });
 
   useEffect(() => {
+    // Ambil data dari localStorage terlebih dahulu
     const savedData = JSON.parse(localStorage.getItem("checkoutForm") || "{}");
 
     setDefaultValues({
@@ -74,17 +75,6 @@ const CheckoutModal = ({
       setIsEditing(false);
     }
   }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("clearOnReturn")) {
-      localStorage.removeItem("checkoutForm");
-      localStorage.removeItem("clearOnReturn");
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("checkoutForm", JSON.stringify(getValues()));
-  }, [getValues]);
 
   const checkSubdomain = async () => {
     if (!subdomain) {
@@ -128,8 +118,7 @@ const CheckoutModal = ({
   };
 
   const onSubmit = (data: TCheckoutFormData) => {
-    startTransition(() => {
-      const message = `
+    const message = `
 *Checkout Order*
 Produk: ${productNames}
 Subdomain: ${data.subdomain + ".personafolio.com" || "Tidak ada"}
@@ -137,21 +126,34 @@ Harga: ${formatPrice(Number(productPrices))}
 Nama: ${data.fullName}
 No. WA: ${data.phone}
 Tahu informasi dari: ${
-        data.status === "instagram"
-          ? "Instagram"
-          : data.status === "website"
-          ? "Website"
-          : ""
-      }
+      data.status === "instagram"
+        ? "Instagram"
+        : data.status === "website"
+        ? "Website"
+        : ""
+    }
 Mohon segera diproses. Terima kasih!`;
 
-      setTimeout(() => {
-        window.location.href = `https://wa.me/6285189296753?text=${encodeURIComponent(
-          message
-        )}`;
-        localStorage.setItem("clearOnReturn", "true");
-      }, 500);
-    });
+    const waUrl = `https://wa.me/6285189296753?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Hapus localStorage dulu
+    localStorage.removeItem("checkoutForm");
+
+    // Tampilkan toast
+    toast.success("Checkout berhasil! Anda akan diarahkan ke beranda...");
+
+    setTimeout(() => {
+      // Buka WhatsApp di tab baru
+      window.open(
+        `https://wa.me/6285189296753?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+
+      // Redirect halaman utama
+      window.location.href = "/";
+    }, 2000);
   };
 
   return (
@@ -183,24 +185,30 @@ Mohon segera diproses. Terima kasih!`;
               <button
                 onClick={checkSubdomain}
                 disabled={isChecking}
-                className="mt-2 w-full bg-blue-500 text-white p-2 rounded-md"
+                className="mt-2 text-light relative flex gap-2 px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaSec before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
               >
-                {isChecking ? "Memeriksa..." : "Cek Ketersediaan"}
+                <span className="relative text-base font-semibold text-light ">
+                  {isChecking ? "Memeriksa..." : "Cek Ketersediaan"}
+                </span>
               </button>
               {subdomainError && (
-                <p className="text-red-500 text-sm mt-1">{subdomainError}</p>
+                <p className="text-red-500 font-bold text-sm mt-1">
+                  {subdomainError}
+                </p>
               )}
               {isAvailable && (
                 <div>
-                  <p className="text-green-500 text-sm mt-1">
+                  <p className="text-personaPri text-sm mt-1 font-bold">
                     {subdomain}.personafolio.com tersedia!
                   </p>
 
                   <button
                     onClick={selectSubdomain}
-                    className="mt-2 w-full bg-green-500 text-white p-2 rounded-md"
+                    className="mt-2 text-light relative flex gap-2 px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                   >
-                    Pilih Nama Domain Website
+                    <span className="relative text-base font-semibold text-light ">
+                      Pilih Nama Domain Website
+                    </span>
                   </button>
                 </div>
               )}
@@ -238,7 +246,7 @@ Mohon segera diproses. Terima kasih!`;
           />
 
           {/* ✅ Status (Mahasiswa/Pekerja/Umum) */}
-          <div>
+          <div className="mb-2">
             <label className="block text-sm font-medium">
               Tahu informasi dari?
             </label>
@@ -251,8 +259,14 @@ Mohon segera diproses. Terima kasih!`;
             </select>
           </div>
 
-          <Button type="submit" disabled={!isValid || isPending}>
-            Checkout
+          <Button
+            type="submit"
+            disabled={!isValid || isPending}
+            className="mt-2 rounded-full relative flex gap-2 px-6 h-11 w-full items-center"
+          >
+            <span className="relative text-base font-semibold text-light">
+              Checkout
+            </span>
           </Button>
         </form>
       </div>

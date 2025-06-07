@@ -7,6 +7,7 @@ const NBLOG = getEnv("NBLOG");
 const NPRODUCT = getEnv("NPRODUCT");
 const NHEADER = getEnv("NHEADER");
 const NMETAHEAD = getEnv("NMETAHEAD");
+const NBANNER = getEnv("NBANNER");
 
 // Tipe dasar untuk item Notion
 export interface NotionRow {
@@ -58,6 +59,9 @@ export const fetchHeader = (): Promise<NotionRow | null> => {
 };
 export const fetchMetaHead = (): Promise<NotionRow | null> => {
   return fetchSingleRow(NMETAHEAD);
+};
+export const fetchBanner = (): Promise<NotionRow | null> => {
+  return fetchSingleRow(NBANNER);
 };
 
 // allpost

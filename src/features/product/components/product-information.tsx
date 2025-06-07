@@ -64,27 +64,32 @@ const ProductInformation = ({
             <Link
               href={urlPreview}
               target="_blank"
-              className="btn bg-personaPri p-2 rounded-xl flex items-center "
+              className="relative flex px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
             >
               <Image
                 alt="icon-home"
                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1leWUiPjxwYXRoIGQ9Ik0yLjA2MiAxMi4zNDhhMSAxIDAgMCAxIDAtLjY5NiAxMC43NSAxMC43NSAwIDAgMSAxOS44NzYgMCAxIDEgMCAwIDEgMCAuNjk2IDEwLjc1IDEwLjc1IDAgMCAxLTE5Ljg3NiAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIvPjwvc3ZnPg=="
                 width={24}
                 height={24}
-                className="me-2"
+                className="me-2 relative"
               />
-              Live Preview
+              <span className="relative text-base font-semibold text-light">
+                Live Preview
+              </span>
             </Link>
           </div>
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-6">
-        <Button
-          className="flex items-center gap-x-2 rounded-full dark:bg-zinc-800 hover:dark:bg-zinc-900 dark:text-white dark:border-zinc-950"
+        <div
+          className="cursor-pointer relative flex gap-2 px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaGray before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
           onClick={onOpenCheckoutModal}
         >
-          Isi Form dan Checkout <ShoppingCart />
-        </Button>
+          <span className="relative text-base font-semibold text-light ">
+            Isi Form dan Checkout
+          </span>
+          <ShoppingCart className="relative text-white" />
+        </div>
       </div>
     </div>
   );

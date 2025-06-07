@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import { NotionAPI } from "notion-client";
 
 import { fetchBlog, fetchHeader, fetchMetaHead } from "@/lib/notion";
+import MainContainer from "@/components/partials/containers/main-container";
 
 export const dynamic = "force-dynamic";
 export async function generateMetadata(): Promise<Metadata> {
@@ -123,48 +124,50 @@ export default async function ArticleDetail({ params }: any) {
 
   return (
     <>
-      <section>
-        <div className="mx-auto">
-          <div className="text-center ">
-            <div className="sm:px-4 md:px-0">
-              {blog.thumbnail?.[0]?.url && (
-                <div className="group relative m-auto h-48 w-full md:w-3/4 overflow-hidden rounded-lg shadow-lg md:h-64 xl:h-96 mt-10">
-                  <Image
-                    src={blog.thumbnail[0].url}
-                    blurDataURL={blog.thumbnail[0].url}
-                    fill
-                    placeholder="blur"
-                    alt="article thumbnail"
-                    className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110 "
-                  />
-                </div>
-              )}
-            </div>
-            <div className=" py-4">
-              <h1 className="font-bold text-3xl lg:text-4xl text-dark dark:text-light">
-                {blog.title}
-              </h1>
-
-              <div className="">
-                {publishedOn}
-                <br />
-                {publishedOn !== modifiedDate && (
-                  <>
-                    <span className="">•</span>
-                    <span className="font-bold">Terakhir diupdate</span>{" "}
-                    <span> {modifiedDate}</span>
-                  </>
+      <MainContainer>
+        <section>
+          <div className="mx-auto">
+            <div className="text-center ">
+              <div className="sm:px-4 md:px-0">
+                {blog.thumbnail?.[0]?.url && (
+                  <div className="group relative m-auto h-48 w-full md:w-3/4 overflow-hidden rounded-lg shadow-lg md:h-64 xl:h-96 mt-10">
+                    <Image
+                      src={blog.thumbnail[0].url}
+                      blurDataURL={blog.thumbnail[0].url}
+                      fill
+                      placeholder="blur"
+                      alt="article thumbnail"
+                      className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110 "
+                    />
+                  </div>
                 )}
               </div>
-            </div>
-            <hr className="border border-1"></hr>
-          </div>
+              <div className=" py-4">
+                <h1 className="font-bold text-3xl lg:text-4xl text-dark dark:text-light">
+                  {blog.title}
+                </h1>
 
-          <div className="">
-            <ClientRenderer blocks={notionPage} />
+                <div className="">
+                  {publishedOn}
+                  <br />
+                  {publishedOn !== modifiedDate && (
+                    <>
+                      <span className="">•</span>
+                      <span className="font-bold">Terakhir diupdate</span>{" "}
+                      <span> {modifiedDate}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <hr className="border border-1"></hr>
+            </div>
+
+            <div className="">
+              <ClientRenderer blocks={notionPage} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </MainContainer>
     </>
   );
 }
