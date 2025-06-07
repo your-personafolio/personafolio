@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/header/navbar";
 import MainContainer from "@/components/partials/containers/main-container";
 import ModeToggle from "./mode-toggle";
+import Image from "next/image";
 
 const Header = async () => {
   return (
@@ -12,7 +13,13 @@ const Header = async () => {
           <div className="h-full flex justify-between items-center lg:justify-start">
             <Link href="/" className="flex gap-x-2">
               <p className="font-bold text-cl">
-                <img src="/logo-persona.png" alt="" className="w-14" />
+                <Image
+                  src="/logo-persona.png"
+                  alt="logo"
+                  height={56}
+                  width={56}
+                  className="w-14"
+                />
               </p>
             </Link>
             <div className="hidden lg:block">

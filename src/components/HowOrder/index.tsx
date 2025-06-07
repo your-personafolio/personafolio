@@ -1,4 +1,6 @@
+import Link from "next/link";
 import YouTubeEmbed from "../YoutubeEmbed";
+import Image from "next/image";
 
 export default function HowOrder() {
   return (
@@ -20,8 +22,11 @@ export default function HowOrder() {
                     Checkout dengan mudah
                   </h6>
                 </div>
-                <img
+
+                <Image
                   className="max-w-[400px] object-cover rounded-xl"
+                  width={400}
+                  height={400}
                   src="/persona-img-3.png"
                   alt="Features Image"
                 />
@@ -108,7 +113,7 @@ export default function HowOrder() {
                   </div>
                 </div>
 
-                <a
+                <Link
                   className="group inline-flex items-center gap-x-2 py-2 px-3 bg-personaPri font-medium text-sm text-light rounded-full focus:outline-none"
                   href="https://wa.me/6285189296753?text=Halo,%20Persona Folio!"
                 >
@@ -135,7 +140,7 @@ export default function HowOrder() {
                     ></path>
                   </svg>
                   Tanya Admin terkait pembayaran
-                </a>
+                </Link>
               </div>
             </div>
           </div>

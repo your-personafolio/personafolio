@@ -1,3 +1,5 @@
+import { usePathname } from "next/navigation";
+
 import { Urbanist } from "next/font/google";
 
 import Footer from "@/components/footer";
@@ -22,6 +24,7 @@ import "katex/dist/katex.min.css";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import LoaderWrapper from "@/components/LoaderWrapper";
 
 export default function RootLayout({
   children,
@@ -39,7 +42,8 @@ export default function RootLayout({
         >
           <ToastProvider />
           <Header />
-          {children}
+
+          <LoaderWrapper>{children}</LoaderWrapper>
           <MenuBottom />
           <Footer />
         </ThemeProvider>
