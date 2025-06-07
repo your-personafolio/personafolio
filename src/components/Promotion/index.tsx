@@ -68,7 +68,7 @@ export default function Promotion() {
                   <Image
                     height={446}
                     width={282}
-                    className="max-w-[282px]"
+                    className="w-full object-cover"
                     src="/persona-img-1.png"
                     alt="Features Image"
                   />

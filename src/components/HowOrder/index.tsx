@@ -51,8 +51,7 @@ export default function HowOrder() {
                   <div className="grow pt-0.5 pb-8 sm:pb-12">
                     <p className="text-sm lg:text-base text-neutral-400">
                       <span className="text-light">
-                        Pilih tema website yang kamu sukai dan masukkan
-                        keranjang!
+                        Pilih tema website yang kamu sukai!
                       </span>
                     </p>
                   </div>
@@ -68,8 +67,12 @@ export default function HowOrder() {
                   </div>
 
                   <div className="grow pt-0.5 pb-8 sm:pb-12">
-                    <p className="text-sm lg:text-base text-dark dark:text-neutral-400">
-                      <span className="text-light">Pergi ke halaman Cart!</span>
+                    <p className="text-sm lg:text-base text-neutral-400">
+                      <span className="text-light">
+                        Isi form dan checkout -{" "}
+                      </span>
+                      Pastikan mengisi data form dengan lengkap sebelum
+                      mengeklik checkout!
                     </p>
                   </div>
                 </div>
@@ -86,10 +89,9 @@ export default function HowOrder() {
                   <div className="grow pt-0.5 pb-8 sm:pb-12">
                     <p className="text-sm md:text-base text-neutral-400">
                       <span className="text-light">
-                        Pilih nama untuk website kamu dan checkout -{" "}
+                        Setelah mengisi form dan klik checkout, kamu akan
+                        diarahkan ke wa admin untuk melakukan pembayaran.
                       </span>
-                      Setelah mengisi form dan klik checkout, kamu akan
-                      diarahkan ke wa admin untuk melakukan pembayaran.
                     </p>
                   </div>
                 </div>
@@ -104,7 +106,7 @@ export default function HowOrder() {
                   </div>
 
                   <div className="grow pt-0.5 pb-8 sm:pb-12">
-                    <p className="text-sm md:text-base text-dark dark:text-neutral-400">
+                    <p className="text-sm md:text-base ">
                       <span className="text-light">
                         Bayar dan kirim bukti pembayaran ke wa admin. Website
                         akan segera diproses
@@ -114,11 +116,11 @@ export default function HowOrder() {
                 </div>
 
                 <Link
-                  className="group inline-flex items-center gap-x-2 py-2 px-3 bg-personaPri font-medium text-sm text-light rounded-full focus:outline-none"
+                  className="group inline-flex relative px-6 h-11 w-full items-center justify-center gap-2 before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                   href="https://wa.me/6285189296753?text=Halo,%20Persona Folio!"
                 >
                   <svg
-                    className="shrink-0 size-4"
+                    className="shrink-0 size-4 relative text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -139,7 +141,10 @@ export default function HowOrder() {
                       d="M14.05 6A5 5 0 0 1 18 10"
                     ></path>
                   </svg>
-                  Tanya Admin terkait pembayaran
+
+                  <span className="relative text-base font-semibold text-light">
+                    Tanya Admin terkait pembayaran
+                  </span>
                 </Link>
               </div>
             </div>

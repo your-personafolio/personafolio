@@ -16,7 +16,9 @@ import {
   fetchProduct,
   fetchHeader,
   fetchMetaHead,
+  fetchBanner,
 } from "@/lib/notion";
+import { title } from "process";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -93,10 +95,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [hero, blog, products] = await Promise.all([
+  const [hero, blog, products, banner] = await Promise.all([
     fetchHero(),
     fetchBlog(),
     fetchProduct(),
+    fetchBanner(),
   ]);
 
   return (
@@ -110,6 +113,9 @@ export default async function HomePage() {
             br={hero?.br || " "}
             btn={hero?.button || "Let's Get Started"}
             url={hero?.btn_url || "/store"}
+            bannerTitle={banner?.title || " "}
+            bannerDesc={banner?.description || " "}
+            bannerUrl={banner?.url || " "}
           />
 
           <div className="flex flex-col gap-y-8">
@@ -121,6 +127,7 @@ export default async function HomePage() {
                   category={product?.category}
                   discount={product?.discount}
                   price={product?.price}
+                  urlPreview={product?.urlPreview}
                   key={product.id}
                 />
               ))}

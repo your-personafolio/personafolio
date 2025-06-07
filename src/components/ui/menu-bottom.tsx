@@ -20,7 +20,7 @@ const MenuBottom = () => {
 
       {/* Menu Bottom dengan transisi */}
       <div
-        className={`fixed bottom-6 inset-x-0 text-center z-[2] transition-all duration-300 transform ${
+        className={`fixed bottom-6 inset-x-0 text-center z-[10] transition-all duration-300 transform ${
           isVisible ? "scale-100 opacity-100" : "scale-0 opacity-0"
         }`}
       >
