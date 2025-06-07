@@ -1,5 +1,7 @@
 import slugify from "slugify";
 import getLocalizedDate from "@/lib/getLocalizeData";
+import Image from "next/image";
+import Link from "next/link";
 
 interface BlogList {
   title: string;
@@ -14,13 +16,15 @@ export default function BlogList(props: BlogList) {
 
   return (
     <>
-      <a
+      <Link
         href={`/article/${slug}`}
         className="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-64 xl:h-96"
       >
-        <img
+        <Image
           src={thumbnail}
           loading="lazy"
+          fill
+          blurDataURL={thumbnail}
           alt="Photo by Minh Pham"
           className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
         />
@@ -37,7 +41,7 @@ export default function BlogList(props: BlogList) {
 
           <span className="font-semibold text-personaSec">Read more</span>
         </div>
-      </a>
+      </Link>
     </>
   );
 }

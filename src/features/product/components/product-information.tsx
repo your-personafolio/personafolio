@@ -8,6 +8,7 @@ import Currency from "@/components/ui/currency";
 
 import CheckoutModal from "@/features/cart/components/cart-content/checkout-modal";
 import { useState } from "react";
+import Link from "next/link";
 
 interface ProductInformation {
   title: string;
@@ -60,7 +61,7 @@ const ProductInformation = ({
             Preview:
           </h3>
           <div className="font-bold text-light">
-            <a
+            <Link
               href={urlPreview}
               target="_blank"
               className="btn bg-personaPri p-2 rounded-xl flex items-center "
@@ -73,7 +74,7 @@ const ProductInformation = ({
                 className="me-2"
               />
               Live Preview
-            </a>
+            </Link>
           </div>
         </div>
       </div>

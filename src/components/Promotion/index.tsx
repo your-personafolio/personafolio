@@ -65,11 +65,23 @@ export default function Promotion() {
             <div className="lg:col-span-7">
               <div className="relative grid grid-cols-12 justify-center gap-2 sm:gap-6 items-center lg:-translate-x-10">
                 <div className="col-span-6">
-                  <img src="/persona-img-1.png" alt="Features Image" />
+                  <Image
+                    height={446}
+                    width={282}
+                    className="max-w-[282px]"
+                    src="/persona-img-1.png"
+                    alt="Features Image"
+                  />
                 </div>
 
                 <div className="col-span-6">
-                  <img src="/persona-img-2.png" alt="Features Image" />
+                  <Image
+                    height={446}
+                    width={282}
+                    className="w-full object-cover"
+                    src="/persona-img-2.png"
+                    alt="Features Image"
+                  />
                 </div>
                 <div className="absolute lg:bottom-20 -bottom-5 md:-start-1 -start-2 p-4 rounded-lg shadow-md dark:shadow-gray-800 bg-white dark:bg-slate-900 m-3 w-auto text-center">
                   <span className="text-3xl font-medium mb-0">

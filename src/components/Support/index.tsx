@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Support() {
   return (
@@ -8,11 +9,13 @@ export default function Support() {
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
             <div className="flex flex-col overflow-hidden rounded-lg bg-gray-200 sm:flex-row md:h-80 dark:bg-gray-500 dark:bg-clip-padding dark:backdrop-filter  dark:backdrop-blur dark:bg-opacity-10 dark:backdrop-saturate-100 dark:backdrop-contrast-100">
               <div className="order-first h-48 w-full bg-gray-300 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
-                <img
+                <Image
                   src="/persona-img-4.jpg"
                   loading="lazy"
+                  width={422}
+                  height={320}
+                  className=" object-cover object-center"
                   alt="Photo by Andras Vas"
-                  className="h-full w-full object-cover object-center"
                 />
               </div>
 
