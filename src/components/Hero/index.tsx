@@ -29,7 +29,7 @@ export default function Hero(props: HeroProps) {
     <>
       <div className="relative" id="home">
         <div className="ini perlu di ubah">
-          <div className="relative pt-36 ml-auto">
+          <div className="relative pt-10 lg:pt-20 ml-auto">
             <div className="lg:w-2/3 text-center mx-auto">
               <Banner title={bannerTitle} desc={bannerDesc} url={bannerUrl} />
               <h1 className="text-personaGray text-balance dark:text-light font-bold text-5xl md:text-6xl xl:text-7xl">
@@ -40,7 +40,7 @@ export default function Hero(props: HeroProps) {
                 </span>
               </h1>
               <p className="mt-8 text-dark dark:text-neutral-400">{desc}</p>
-              <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
+              <div className="mt-10 flex flex-wrap justify-center gap-y-4 gap-x-6">
                 <Link
                   href={url}
                   className="relative flex px-6 h-11 w-full items-center justify-center  before:absolute before:inset-0 before:rounded-full before:bg-personaPri before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
